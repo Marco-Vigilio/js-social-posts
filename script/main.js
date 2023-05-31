@@ -79,12 +79,6 @@ const posts = [
     }
 ];
 
-//DIV CONTAIN HTML
-
-
-//POST
-let divPost = CreateElement("div", "post");
-container.append(divPost);
 
 
 posts.forEach(element => {
@@ -93,9 +87,13 @@ posts.forEach(element => {
 
 
 function CreatePost(objectEl){
+//DIV CONTAIN HTML
+let container = document.querySelector("#container");
+console.log(container);
 
-    let container = document.querySelector("#container");
-    console.log(container);
+//POST
+let divPost = CreateElement("div", "post");
+container.append(divPost);
 
     //POST HEAD
     let divPostHead = CreateElement("div", "post__header");
