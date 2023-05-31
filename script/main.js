@@ -87,13 +87,13 @@ posts.forEach(element => {
 
 
 function CreatePost(objectEl){
-//DIV CONTAIN HTML
-let container = document.querySelector("#container");
-console.log(container);
+    //DIV CONTAIN HTML
+    let container = document.querySelector("#container");
+    console.log(container);
 
-//POST
-let divPost = CreateElement("div", "post");
-container.append(divPost);
+    //POST
+    let divPost = CreateElement("div", "post");
+    container.append(divPost);
 
     //POST HEAD
     let divPostHead = CreateElement("div", "post__header");
@@ -102,19 +102,16 @@ container.append(divPost);
     let divPostMetaIcon = CreateElement("div", "post-meta__icon");
     let imgProfile = CreateElement("img", "profile-pic");
         //TODO POPOLO L'IMMAGINE PROFILO DELL'ARRAY
-        imgProfile.src = objectEl.author.image;
-        //imgProfile.src = posts[0].author.image;    
+        imgProfile.src = objectEl.author.image;   
 
     let divPostMetaData = CreateElement("div", "post-meta__data");
     let divPostMetaAuthor = CreateElement("div", "post-meta__author");
         //TODO POPOLO L'META AUTHOR
         divPostMetaAuthor.append(objectEl.author.name);
-        //divPostMetaAuthor.append(posts[0].author.name);
 
     let divPostMetaTime = CreateElement("div", "post-meta__time");
         //TODO POPOLO L'META TIME
         divPostMetaTime.append(objectEl.created);
-        //divPostMetaTime.append(posts[0].created);
 
 
     //*APPEND POST HEAD
@@ -134,7 +131,6 @@ container.append(divPost);
 
     //TODO DA INSERIRE IL TESTO (CONTENT) DALL'ARRAY
     divPostText.append(objectEl.content);
-    //divPostText.append(posts[0].content);
 
     //* APPEND POST TEXT
     //divPost.append(divPostText);
@@ -145,7 +141,6 @@ container.append(divPost);
 
     //  TODO DA INSERIRE L'IMMAGINE DELL'ARRAY
     img.src = objectEl.media;
-    //img.src = posts[0].media;
     img.alt = "image post";
 
 
@@ -162,7 +157,15 @@ container.append(divPost);
     let divLikesCta = CreateElement("div", "likes__cta");
     let aButton = CreateElement("a", "like-button");
     aButton.classList.add("js-like-button");
+    aButton.href = "#";
+    
+    
+    
+    //?aButton.data-postid = objectEl.id;
 
+
+
+    
     let i = CreateElement("i", "like-button__icon");
     i.classList.add("fas", "fa-thumbs-up");
     let span = CreateElement("span", "like-button__label");
@@ -171,7 +174,7 @@ container.append(divPost);
     let divLikesCounter = CreateElement("div", "likes__counter");
     divLikesCounter.prepend("Piace a ");
     let b = CreateElement("b", "js-likes-counter");
-    b.append("80");
+    b.append(objectEl.likes);
 
     //* APPEND POST FOOTER
     //divPost.append(divPostFooter);
