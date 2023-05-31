@@ -9,9 +9,9 @@
 **Milestone 1
 **Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed.
 
-Milestone 2
-Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo.
-Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
+**Milestone 2
+**Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo.
+**Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
 
 BONUS
 Formattare le date in formato italiano (gg/mm/aaaa)
@@ -100,13 +100,24 @@ function CreatePost(objectEl){
 
     let divPostMetaIcon = CreateElement("div", "post-meta__icon");
     let imgProfile = CreateElement("img", "profile-pic");
+       
+    let spanProfile = document.createElement("span");
+    //nameUser = nameUser.charAt(0).toLocaleUpperCase();
+
         //TODO POPOLO L'IMMAGINE PROFILO DELL'ARRAY
         imgProfile.src = objectEl.author.image;
-        console.log(imgProfile.src);
-
-        if(imgProfile.src === null){
-            imgProfile.classList.add("profile-pic-default");
+        if(objectEl.author.image === null){
+            divPostMetaIcon.classList.add("profile-pic-default");
+            imgProfile.removeAttribute("src");
+            
+            let initialsLetters = LetterUpperCase(objectEl.author.name);
+            spanProfile.append(initialsLetters);
+            divPostMetaIcon.append(spanProfile);
         }
+        else{
+            divPostMetaIcon.append(imgProfile);
+        }
+        
         //? profile-pic-default
         //? profile-pic-default span 
 
@@ -125,7 +136,7 @@ function CreatePost(objectEl){
     divPostHead.append(divPostMeta);
 
     divPostMeta.append(divPostMetaIcon);
-        divPostMetaIcon.append(imgProfile);
+        
 
     divPostMeta.append(divPostMetaData);
         divPostMetaData.append(divPostMetaAuthor);
@@ -248,4 +259,16 @@ function CreateElement(tagName, className) {
     let element = document.createElement(tagName);
     element.classList.add(className);
     return element;
+}
+
+
+function LetterUpperCase(word){
+    let initials = "";
+    let letters = word.split(" ");
+    letters.forEach(words => {
+        let letter = words.charAt(0);
+        initials = initials + letter
+    });
+    console.log(initials);
+    return initials;
 }
