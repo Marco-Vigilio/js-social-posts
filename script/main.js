@@ -92,21 +92,39 @@ let divPostHead = CreateElement("div", "post__header");
 let divPostMeta = CreateElement("div", "post-meta");
 
 let divPostMetaIcon = CreateElement("div", "post-meta__icon");
-let imgProfile = CreateElement("img", "profilo-pic");
-    //TODO POPOLO L'IMMAGINE PROFILO
+let imgProfile = CreateElement("img", "profile-pic");
+    //TODO POPOLO L'IMMAGINE PROFILO DELL'ARRAY
+    imgProfile.src = posts[0].author.image;    
 
 let divPostMetaData = CreateElement("div", "post-meta__data");
 let divPostMetaAuthor = CreateElement("div", "post-meta__author");
     //TODO POPOLO L'META AUTHOR
+    divPostMetaAuthor.append(posts[0].author.name);
+
 let divPostMetaTime = CreateElement("div", "post-meta__time");
     //TODO POPOLO L'META TIME
+    divPostMetaTime.append(posts[0].created);
+
+
+//*APPEND POST HEAD
+divPost.append(divPostHead);
+divPostHead.append(divPostMeta);
+
+divPostMeta.append(divPostMetaIcon);
+    divPostMetaIcon.append(imgProfile);
+
+divPostMeta.append(divPostMetaData);
+    divPostMetaData.append(divPostMetaAuthor);
+    divPostMetaData.append(divPostMetaTime);
+
 
 //POST TEXT
 let divPostText = CreateElement("div", "post__text");
 
-//TODO POPOLO TESTO
-divPostText.append(posts[1].content);
+//TODO DA INSERIRE IL TESTO (CONTENT) DALL'ARRAY
+divPostText.append(posts[0].content);
 
+//* APPEND POST TEXT
 divPost.append(divPostText);
 
 //POST IMAGE
@@ -117,6 +135,8 @@ let img = document.createElement("img");
 img.src = "https://unsplash.it/600/300?image=";
 img.alt = "image post";
 
+
+//* APPEND POST IMAGE
 divPost.append(divPostImage);
 divPostImage.append(img);
 
@@ -140,7 +160,7 @@ divLikesCounter.prepend("Piace a ");
 let b = CreateElement("b", "js-likes-counter");
 b.append("80");
 
-
+//* APPEND POST FOOTER
 divPost.append(divPostFooter);
 divPostFooter.append(divLikes);
 
@@ -153,7 +173,6 @@ divLikes.append(divLikesCounter);
     divLikesCounter.append(b);
     divLikesCounter.append(" persone")
 
-console.log(divPostFooter);
 
 
 
