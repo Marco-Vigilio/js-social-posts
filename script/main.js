@@ -80,99 +80,121 @@ const posts = [
 ];
 
 //DIV CONTAIN HTML
-let container = document.querySelector("#container");
-console.log(container);
+
 
 //POST
 let divPost = CreateElement("div", "post");
 container.append(divPost);
 
-//POST HEAD
-let divPostHead = CreateElement("div", "post__header");
-let divPostMeta = CreateElement("div", "post-meta");
 
-let divPostMetaIcon = CreateElement("div", "post-meta__icon");
-let imgProfile = CreateElement("img", "profile-pic");
-    //TODO POPOLO L'IMMAGINE PROFILO DELL'ARRAY
-    imgProfile.src = posts[0].author.image;    
-
-let divPostMetaData = CreateElement("div", "post-meta__data");
-let divPostMetaAuthor = CreateElement("div", "post-meta__author");
-    //TODO POPOLO L'META AUTHOR
-    divPostMetaAuthor.append(posts[0].author.name);
-
-let divPostMetaTime = CreateElement("div", "post-meta__time");
-    //TODO POPOLO L'META TIME
-    divPostMetaTime.append(posts[0].created);
+posts.forEach(element => {
+    CreatePost(element);
+});
 
 
-//*APPEND POST HEAD
-divPost.append(divPostHead);
-divPostHead.append(divPostMeta);
+function CreatePost(objectEl){
 
-divPostMeta.append(divPostMetaIcon);
-    divPostMetaIcon.append(imgProfile);
+    let container = document.querySelector("#container");
+    console.log(container);
 
-divPostMeta.append(divPostMetaData);
-    divPostMetaData.append(divPostMetaAuthor);
-    divPostMetaData.append(divPostMetaTime);
+    //POST HEAD
+    let divPostHead = CreateElement("div", "post__header");
+    let divPostMeta = CreateElement("div", "post-meta");
 
+    let divPostMetaIcon = CreateElement("div", "post-meta__icon");
+    let imgProfile = CreateElement("img", "profile-pic");
+        //TODO POPOLO L'IMMAGINE PROFILO DELL'ARRAY
+        imgProfile.src = objectEl.author.image;
+        //imgProfile.src = posts[0].author.image;    
 
-//POST TEXT
-let divPostText = CreateElement("div", "post__text");
+    let divPostMetaData = CreateElement("div", "post-meta__data");
+    let divPostMetaAuthor = CreateElement("div", "post-meta__author");
+        //TODO POPOLO L'META AUTHOR
+        divPostMetaAuthor.append(objectEl.author.name);
+        //divPostMetaAuthor.append(posts[0].author.name);
 
-//TODO DA INSERIRE IL TESTO (CONTENT) DALL'ARRAY
-divPostText.append(posts[0].content);
-
-//* APPEND POST TEXT
-divPost.append(divPostText);
-
-//POST IMAGE
-let divPostImage = CreateElement("div", "post__image");
-let img = document.createElement("img");
-
-//  TODO DA INSERIRE L'IMMAGINE DELL'ARRAY
-img.src = "https://unsplash.it/600/300?image=";
-img.alt = "image post";
+    let divPostMetaTime = CreateElement("div", "post-meta__time");
+        //TODO POPOLO L'META TIME
+        divPostMetaTime.append(objectEl.created);
+        //divPostMetaTime.append(posts[0].created);
 
 
-//* APPEND POST IMAGE
-divPost.append(divPostImage);
-divPostImage.append(img);
+    //*APPEND POST HEAD
+    //divPost.append(divPostHead);
+    divPostHead.append(divPostMeta);
+
+    divPostMeta.append(divPostMetaIcon);
+        divPostMetaIcon.append(imgProfile);
+
+    divPostMeta.append(divPostMetaData);
+        divPostMetaData.append(divPostMetaAuthor);
+        divPostMetaData.append(divPostMetaTime);
 
 
-//POST FOOTER
-let divPostFooter = CreateElement("div", "post__footer");
-let divLikes = CreateElement("div", "likes");
-divLikes.classList.add("js-likes");
+    //POST TEXT
+    let divPostText = CreateElement("div", "post__text");
 
-let divLikesCta = CreateElement("div", "likes__cta");
-let aButton = CreateElement("a", "like-button");
-aButton.classList.add("js-like-button");
+    //TODO DA INSERIRE IL TESTO (CONTENT) DALL'ARRAY
+    divPostText.append(objectEl.content);
+    //divPostText.append(posts[0].content);
 
-let i = CreateElement("i", "like-button__icon");
-i.classList.add("fas", "fa-thumbs-up");
-let span = CreateElement("span", "like-button__label");
-span.append(" Mi piace");
+    //* APPEND POST TEXT
+    //divPost.append(divPostText);
 
-let divLikesCounter = CreateElement("div", "likes__counter");
-divLikesCounter.prepend("Piace a ");
-let b = CreateElement("b", "js-likes-counter");
-b.append("80");
+    //POST IMAGE
+    let divPostImage = CreateElement("div", "post__image");
+    let img = document.createElement("img");
 
-//* APPEND POST FOOTER
-divPost.append(divPostFooter);
-divPostFooter.append(divLikes);
+    //  TODO DA INSERIRE L'IMMAGINE DELL'ARRAY
+    img.src = objectEl.media;
+    //img.src = posts[0].media;
+    img.alt = "image post";
 
-divLikes.append(divLikesCta);
-    divLikesCta.append(aButton);
-    aButton.append(i);
-    aButton.append(span);
 
-divLikes.append(divLikesCounter);
-    divLikesCounter.append(b);
-    divLikesCounter.append(" persone")
+    //* APPEND POST IMAGE
+    //divPost.append(divPostImage);
+    divPostImage.append(img);
 
+
+    //POST FOOTER
+    let divPostFooter = CreateElement("div", "post__footer");
+    let divLikes = CreateElement("div", "likes");
+    divLikes.classList.add("js-likes");
+
+    let divLikesCta = CreateElement("div", "likes__cta");
+    let aButton = CreateElement("a", "like-button");
+    aButton.classList.add("js-like-button");
+
+    let i = CreateElement("i", "like-button__icon");
+    i.classList.add("fas", "fa-thumbs-up");
+    let span = CreateElement("span", "like-button__label");
+    span.append(" Mi piace");
+
+    let divLikesCounter = CreateElement("div", "likes__counter");
+    divLikesCounter.prepend("Piace a ");
+    let b = CreateElement("b", "js-likes-counter");
+    b.append("80");
+
+    //* APPEND POST FOOTER
+    //divPost.append(divPostFooter);
+    divPostFooter.append(divLikes);
+
+    divLikes.append(divLikesCta);
+        divLikesCta.append(aButton);
+        aButton.append(i);
+        aButton.append(span);
+
+    divLikes.append(divLikesCounter);
+        divLikesCounter.append(b);
+        divLikesCounter.append(" persone")
+
+
+        divPost.append(divPostHead);
+        divPost.append(divPostText);
+        divPost.append(divPostImage);
+        divPost.append(divPostFooter);
+
+}
 
 
 
