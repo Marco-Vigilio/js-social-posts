@@ -1,13 +1,13 @@
 /**
  * 
- * Descrizione
-Ricreiamo un feed social aggiungendo al layout di base fornito, il nostro script JS in cui:
-Non è necessario creare date casuali 
-Per le immagini va bene utilizzare qualsiasi servizio di placeholder ad es.
-Unsplash (https://unsplash.it/300/300?image=<id>)
+ * *Descrizione
+**Ricreiamo un feed social aggiungendo al layout di base fornito, il nostro script JS in cui:
+**Non è necessario creare date casuali 
+**Per le immagini va bene utilizzare qualsiasi servizio di placeholder ad es.
+**Unsplash (https://unsplash.it/300/300?image=<id>)
 
-Milestone 1
-Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed.
+**Milestone 1
+**Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed.
 
 Milestone 2
 Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo.
@@ -89,7 +89,6 @@ posts.forEach(element => {
 function CreatePost(objectEl){
     //DIV CONTAIN HTML
     let container = document.querySelector("#container");
-    console.log(container);
 
     //POST
     let divPost = CreateElement("div", "post");
@@ -195,8 +194,15 @@ function CreatePost(objectEl){
 
 
 
+let bottons = document.querySelectorAll("a");
+console.log(bottons);
 
-
+bottons.forEach(botton => {
+    botton.addEventListener("click", function(){
+    let a = document.querySelector("a");
+    a.classList.toggle("like-button--liked");
+    });
+});
 
 function CreateElement(tagName, className) {
     let element = document.createElement(tagName);
