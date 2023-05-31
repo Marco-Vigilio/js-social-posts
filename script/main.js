@@ -102,6 +102,11 @@ function CreatePost(objectEl){
     let imgProfile = CreateElement("img", "profile-pic");
         //TODO POPOLO L'IMMAGINE PROFILO DELL'ARRAY
         imgProfile.src = objectEl.author.image;
+        console.log(imgProfile.src);
+
+        if(imgProfile.src === null){
+            imgProfile.classList.add("profile-pic-default");
+        }
         //? profile-pic-default
         //? profile-pic-default span 
 
@@ -195,13 +200,12 @@ function CreatePost(objectEl){
 
 
 
-
+//LIKE & UPDATE NUMBER
 let bottons = document.querySelectorAll("a");
 let changeB = document.querySelectorAll("b");
+let arrayLike = [];
 
-console.log(bottons);
 bottons.forEach((botton, index) => {
-    console.log(index);
     botton.addEventListener("click", function(){
         let verify = false;
         botton.classList.toggle("like-button--liked");
@@ -212,9 +216,8 @@ bottons.forEach((botton, index) => {
 
             let like = posts[index].likes + 1;
             let change = changeB[index].textContent = like;
-            console.log(change);
-            console.log(changeB);
-            console.log(like);
+            arrayLike.push(posts[index].id);
+            console.log(arrayLike);
         }
         else{
             verify = false;
@@ -222,9 +225,7 @@ bottons.forEach((botton, index) => {
 
             let like = posts[index].likes;
             let change = changeB[index].textContent = like;
-            console.log(change);
-            console.log(changeB);
-            console.log(like);
+
         }
         
 
