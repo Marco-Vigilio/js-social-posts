@@ -103,11 +103,17 @@ let divPostMetaTime = CreateElement("div", "post-meta__time");
 
 //POST TEXT
 let divPostText = CreateElement("div", "post__text");
-    //TODO POPOLO TESTO
+
+//TODO POPOLO TESTO
+divPostText.append(posts[1].content);
+
+divPost.append(divPostText);
 
 //POST IMAGE
 let divPostImage = CreateElement("div", "post__image");
 let img = document.createElement("img");
+
+//  TODO DA INSERIRE L'IMMAGINE DELL'ARRAY
 img.src = "https://unsplash.it/600/300?image=";
 img.alt = "image post";
 
