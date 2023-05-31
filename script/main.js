@@ -158,14 +158,8 @@ function CreatePost(objectEl){
     let aButton = CreateElement("a", "like-button");
     aButton.classList.add("js-like-button");
     aButton.href = "#";
-    
-    
-    
-    //?aButton.data-postid = objectEl.id;
+    aButton.setAttribute("data-postid", objectEl.id);
 
-
-
-    
     let i = CreateElement("i", "like-button__icon");
     i.classList.add("fas", "fa-thumbs-up");
     let span = CreateElement("span", "like-button__label");
