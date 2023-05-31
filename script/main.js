@@ -218,39 +218,41 @@ let arrayLike = [];
 
 bottons.forEach((botton, index) => {
     botton.addEventListener("click", function(){
-        let verify = false;
+        let like;
+        let verify;
         botton.classList.toggle("like-button--liked");
 
         if(botton.classList.contains("like-button--liked")){
-            verify = true;
             console.log("Hai messo Mi piace");
 
-            let like = posts[index].likes + 1;
-            let change = changeB[index].textContent = like;
+            like = posts[index].likes + 1;
+            posts[index].likes = like;
+            changeB[index].textContent = like;
+
+            verify = true;
+        }
+        else{
+            console.log("Hai tolto mi piace");
+
+            like = posts[index].likes - 1;
+            posts[index].likes = like;
+            changeB[index].textContent = like;
+
+            //console.log(arrayLike);
+            verify = false;
+        }
+
+
+        if(verify === true){
             arrayLike.push(posts[index].id);
             console.log(arrayLike);
         }
         else{
-            verify = false;
-            console.log("Hai tolto mi piace");
-
-            let like = posts[index].likes;
-            let change = changeB[index].textContent = like;
-
+            arrayLike = DeleteIdArray(arrayLike, posts[index].id);
+            console.log(arrayLike);
         }
-        
-
-        /*
-        let a = document.querySelector(`a.`${botton});
-        a.classList.toggle("like-button--liked");
-        */
     });
     
-    /*
-    const parentElement = document.querySelector("#parent");
-    let allChildren = parentElement.querySelectorAll(":scope > span");
-    allChildren.forEach((item) => item.classList.add("red"));
-    */
 });
 
 
@@ -269,6 +271,17 @@ function LetterUpperCase(word){
         let letter = words.charAt(0);
         initials = initials + letter
     });
-    console.log(initials);
     return initials;
 }
+
+
+function DeleteIdArray(array, id) {
+    let element = array.indexOf(id); // Trova l'indice dell'elemento da cancellare
+  
+    if (element > -1) { // Verifica se l'elemento è stato trovato
+      array.splice(element, 1); // Elimina l'elemento dall'array
+    }
+  
+    return array; // Restituisci l'array modificato
+  }
+  
