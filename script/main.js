@@ -83,43 +83,76 @@ const posts = [
 let container = document.querySelector("#container");
 console.log(container);
 
-//POST HEAD
-let postHead = CreateElement("div", "post__header");
-let postMeta = CreateElement("div", "post-meta");
+//POST
+let divPost = CreateElement("div", "post");
+container.append(divPost);
 
-let postMetaIcon = CreateElement("div", "post-meta__icon");
+//POST HEAD
+let divPostHead = CreateElement("div", "post__header");
+let divPostMeta = CreateElement("div", "post-meta");
+
+let divPostMetaIcon = CreateElement("div", "post-meta__icon");
 let imgProfile = CreateElement("img", "profilo-pic");
     //TODO POPOLO L'IMMAGINE PROFILO
 
-let postMetaData = CreateElement("div", "post-meta__data");
-let postMetaAuthor = CreateElement("div", "post-meta__author");
+let divPostMetaData = CreateElement("div", "post-meta__data");
+let divPostMetaAuthor = CreateElement("div", "post-meta__author");
     //TODO POPOLO L'META AUTHOR
-let postMetaTime = CreateElement("div", "post-meta__time");
+let divPostMetaTime = CreateElement("div", "post-meta__time");
     //TODO POPOLO L'META TIME
 
 //POST TEXT
-let postText = CreateElement("div", "post__text");
+let divPostText = CreateElement("div", "post__text");
     //TODO POPOLO TESTO
 
 //POST IMAGE
-let postImage = CreateElement("div", "post__image");
+let divPostImage = CreateElement("div", "post__image");
 let img = document.createElement("img");
-    //TODO POPOLO L'IMMAGINE POST
+img.src = "https://unsplash.it/600/300?image=";
+img.alt = "image post";
+
+divPost.append(divPostImage);
+divPostImage.append(img);
+
 
 //POST FOOTER
-let postFooter = CreateElement("div", "post__footer");
-let likes = CreateElement("div", "likes");
-likes.classList.add("js-likes");
+let divPostFooter = CreateElement("div", "post__footer");
+let divLikes = CreateElement("div", "likes");
+divLikes.classList.add("js-likes");
 
-let likesCta = CreateElement("div", "likes__cta");
+let divLikesCta = CreateElement("div", "likes__cta");
 let aButton = CreateElement("a", "like-button");
 aButton.classList.add("js-like-button");
+
 let i = CreateElement("i", "like-button__icon");
 i.classList.add("fas", "fa-thumbs-up");
 let span = CreateElement("span", "like-button__label");
+span.append(" Mi piace");
 
 let divLikesCounter = CreateElement("div", "likes__counter");
+divLikesCounter.prepend("Piace a ");
 let b = CreateElement("b", "js-likes-counter");
+b.append("80");
+
+
+divPost.append(divPostFooter);
+divPostFooter.append(divLikes);
+
+divLikes.append(divLikesCta);
+    divLikesCta.append(aButton);
+    aButton.append(i);
+    aButton.append(span);
+
+divLikes.append(divLikesCounter);
+    divLikesCounter.append(b);
+    divLikesCounter.append(" persone")
+
+console.log(divPostFooter);
+
+
+
+
+
 
 
 
