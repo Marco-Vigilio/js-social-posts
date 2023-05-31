@@ -101,7 +101,9 @@ function CreatePost(objectEl){
     let divPostMetaIcon = CreateElement("div", "post-meta__icon");
     let imgProfile = CreateElement("img", "profile-pic");
         //TODO POPOLO L'IMMAGINE PROFILO DELL'ARRAY
-        imgProfile.src = objectEl.author.image;   
+        imgProfile.src = objectEl.author.image;
+        //? profile-pic-default
+        //? profile-pic-default span 
 
     let divPostMetaData = CreateElement("div", "post-meta__data");
     let divPostMetaAuthor = CreateElement("div", "post-meta__author");
@@ -195,14 +197,51 @@ function CreatePost(objectEl){
 
 
 let bottons = document.querySelectorAll("a");
-console.log(bottons);
+let changeB = document.querySelectorAll("b");
 
-bottons.forEach(botton => {
+console.log(bottons);
+bottons.forEach((botton, index) => {
+    console.log(index);
     botton.addEventListener("click", function(){
-    let a = document.querySelector("a");
-    a.classList.toggle("like-button--liked");
+        let verify = false;
+        botton.classList.toggle("like-button--liked");
+
+        if(botton.classList.contains("like-button--liked")){
+            verify = true;
+            console.log("Hai messo Mi piace");
+
+            let like = posts[index].likes + 1;
+            let change = changeB[index].textContent = like;
+            console.log(change);
+            console.log(changeB);
+            console.log(like);
+        }
+        else{
+            verify = false;
+            console.log("Hai tolto mi piace");
+
+            let like = posts[index].likes;
+            let change = changeB[index].textContent = like;
+            console.log(change);
+            console.log(changeB);
+            console.log(like);
+        }
+        
+
+        /*
+        let a = document.querySelector(`a.`${botton});
+        a.classList.toggle("like-button--liked");
+        */
     });
+    
+    /*
+    const parentElement = document.querySelector("#parent");
+    let allChildren = parentElement.querySelectorAll(":scope > span");
+    allChildren.forEach((item) => item.classList.add("red"));
+    */
 });
+
+
 
 function CreateElement(tagName, className) {
     let element = document.createElement(tagName);
