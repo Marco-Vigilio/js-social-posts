@@ -120,9 +120,6 @@ function CreatePost(objectEl){
         else{
             divPostMetaIcon.append(imgProfile);
         }
-        
-        //? profile-pic-default
-        //? profile-pic-default span 
 
     let divPostMetaData = CreateElement("div", "post-meta__data");
     let divPostMetaAuthor = CreateElement("div", "post-meta__author");
@@ -130,9 +127,13 @@ function CreatePost(objectEl){
         divPostMetaAuthor.append(objectEl.author.name);
 
     let divPostMetaTime = CreateElement("div", "post-meta__time");
+    let dataTime = InvertString(objectEl.created);
         //TODO POPOLO L'META TIME
-        divPostMetaTime.append(objectEl.created);
+        divPostMetaTime.append(dataTime);
+        
+        //?INSERISCO LA DATA AL CONTRARIO D/M/Y
 
+        console.log( objectEl.created);
 
     //*APPEND POST HEAD
     //divPost.append(divPostHead);
@@ -286,5 +287,11 @@ function DeleteIdArray(array, id) {
     }
   
     return array; // Restituisci l'array modificato
-  }
-  
+}
+
+function InvertString(stringData){
+    let wordsArray = stringData.split("-");
+    wordsArray.reverse();
+    let wordData = wordsArray.join("-");
+    return wordData;
+}    
