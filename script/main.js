@@ -100,19 +100,22 @@ function CreatePost(objectEl){
 
     let divPostMetaIcon = CreateElement("div", "post-meta__icon");
     let imgProfile = CreateElement("img", "profile-pic");
-       
+    
+    let div = document.createElement("div");
     let spanProfile = document.createElement("span");
     //nameUser = nameUser.charAt(0).toLocaleUpperCase();
 
         //TODO POPOLO L'IMMAGINE PROFILO DELL'ARRAY
         imgProfile.src = objectEl.author.image;
         if(objectEl.author.image === null){
-            divPostMetaIcon.classList.add("profile-pic-default");
+            div.classList.add("profile-pic-default")
+            //divPostMetaIcon.classList.add("profile-pic-default");
             imgProfile.removeAttribute("src");
             
             let initialsLetters = LetterUpperCase(objectEl.author.name);
             spanProfile.append(initialsLetters);
-            divPostMetaIcon.append(spanProfile);
+            divPostMetaIcon.append(div);
+            div.append(spanProfile);
         }
         else{
             divPostMetaIcon.append(imgProfile);
