@@ -127,13 +127,14 @@ function CreatePost(objectEl){
         divPostMetaAuthor.append(objectEl.author.name);
 
     let divPostMetaTime = CreateElement("div", "post-meta__time");
-    let dataTime = InvertString(objectEl.created);
+    
         //TODO POPOLO L'META TIME
+        //?INSERISCO LA DATA AL CONTRARIO D/M/Y
+        let dataTime = InvertString(objectEl.created);
         divPostMetaTime.append(dataTime);
         
-        //?INSERISCO LA DATA AL CONTRARIO D/M/Y
+        
 
-        console.log( objectEl.created);
 
     //*APPEND POST HEAD
     //divPost.append(divPostHead);
@@ -221,7 +222,8 @@ let changeB = document.querySelectorAll("b");
 let arrayLike = [];
 
 bottons.forEach((botton, index) => {
-    botton.addEventListener("click", function(){
+    botton.addEventListener("click", function(event){
+        event.preventDefault();
         let like;
         let verify;
         botton.classList.toggle("like-button--liked");
